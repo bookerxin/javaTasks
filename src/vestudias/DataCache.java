@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DataCache {
 
-    Map<String, Object> cache;
+    Map<String, Object> cache = new HashMap<>();
 
     public void updateCache(String key, Map<String, Integer> value) {
         cache.put(key, value);

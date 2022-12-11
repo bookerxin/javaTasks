@@ -15,13 +15,13 @@ public class Main {
         ScheduleHandler scheduleHandler = new ScheduleHandler();
         System.out.println("Application Starting...");
 
-        scheduleHandler.startTimerTask();
+        scheduleHandler.startTasks();
 
-        scheduleHandler.startTestTask();
-
-        scheduleHandler.startCacheUpdateTask();
-        scheduleHandler.startDisplayCacheTask();
-        scheduleHandler.startClearCacheTask();
+//        scheduleHandler.startTimerTask();
+//        scheduleHandler.startTestTask();
+//        scheduleHandler.startCacheUpdateTask();
+//        scheduleHandler.startDisplayCacheTask();
+//        scheduleHandler.startClearCacheTask();
 
     }
 

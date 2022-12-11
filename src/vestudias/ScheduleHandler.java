@@ -1,6 +1,9 @@
 
 package vestudias;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -9,17 +12,23 @@ public class ScheduleHandler {
 
     private final ScheduledExecutorService scheduler;
 
-//    private final Tasks.TimerTask timerTask;
-//    private final Tasks.UpdateCacheTask updateCacheTask;
-//    private final Tasks.DisplayCacheTask displayCacheTask;
-//    private final Tasks.ClearCacheTask clearCacheTask;
+    List<Runnable> tasksList = new ArrayList<>();
+    private final Tasks.TimerTask timerTask;
+    private final Tasks.UpdateCacheTask updateCacheTask;
+    private final Tasks.DisplayCacheTask displayCacheTask;
+    private final Tasks.ClearCacheTask clearCacheTask;
 
     public ScheduleHandler() {
         this.scheduler = Executors.newScheduledThreadPool(4);
-//        this.timerTask = new Tasks.TimerTask();
-//        this.updateCacheTask = new Tasks.UpdateCacheTask();
-//        this.displayCacheTask= new Tasks.DisplayCacheTask();
-//        this.clearCacheTask = new Tasks.ClearCacheTask();
+        timerTask = new Tasks.TimerTask();
+        updateCacheTask = new Tasks.UpdateCacheTask();
+        displayCacheTask = new Tasks.DisplayCacheTask();
+        clearCacheTask = new Tasks.ClearCacheTask();
+        tasksList.addAll(Arrays.asList(timerTask, updateCacheTask, displayCacheTask, clearCacheTask));
+    }
+
+    public void startTasks() {
+        tasksList.forEach(Runnable::run);
     }
 
     public void startTimerTask() {
